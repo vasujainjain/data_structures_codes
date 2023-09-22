@@ -1,0 +1,50 @@
+#include<iostream>
+using namespace std;
+void count_Sort(int arr[],int n)
+{
+   int m=arr[0];
+   for(int i=1;i<n;i++)
+   {
+if(m<arr[i])
+m=arr[i];
+   } 
+int count[m+1]={0};
+for(int i=0;i<n;i++)
+{
+    count[arr[i]]++;
+}
+
+int j=0,l=0;
+while(j<=m)
+{
+    if(count[j]>0)
+    {
+        arr[l]=j;
+        count[j]=count[j]-1;
+        l++;
+    }
+    else
+    {
+        j++;
+    }
+}
+int i;
+for(i=0;i<n;i++)
+{
+    cout<<arr[i]<<" ";
+}
+}
+int main()
+{
+    int n;
+    cout<<"enter size";
+    cin>>n;
+    int arr[n];
+    cout<<"enter array elements";
+    for(int i=0;i<n;i++)
+    {
+        cin>>arr[i];
+    }
+    count_Sort(arr,n);
+    return 0;
+}
