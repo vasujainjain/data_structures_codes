@@ -1,0 +1,117 @@
+#include<iostream>
+using namespace std;
+class Node
+{
+    public:
+    int data;
+    Node* next;
+    Node* prev;
+    Node(int d)
+    {
+data=d;
+next=NULL;
+prev=NULL;
+    }
+};
+void insertAthead(Node* &head,Node* &tail,int d)
+{
+    Node* ptr=new Node(d);
+    if(head==NULL)
+    {
+        head=ptr;
+        tail=ptr;
+        return;
+    }
+    else{
+    ptr->next=head;
+    head->prev=ptr;
+    head=ptr;
+    }
+}
+void insertAttail(Node* &head,Node* &tail,int d)
+{
+
+    Node* ptr=new Node(d);
+    if(head==NULL)
+    {
+        head=ptr;
+        tail=ptr;
+        return;
+    }
+    else{
+    tail->next=ptr;
+    ptr->prev=tail;
+    tail=ptr;
+    }
+}
+void deleteAthead(Node* &head)
+{
+    Node*todelete=head;
+    head=head->next;
+delete todelete;
+}
+void deleteAttail(Node* &head,Node* &tail)
+{
+    Node*todelete=tail;
+    tail=tail->prev;
+    tail->next=NULL;
+    delete todelete;
+}
+Node*reverse(Node* &head,Node* &tail)
+{
+    Node*temp=head;
+    head=tail;
+    tail=temp;
+    Node*temp2=head;
+    while(temp2!=NULL)
+    {
+        cout<<temp2->data<<"->";
+        temp2=temp2->prev;
+    }
+}
+void display(Node* &head)
+{
+    Node* temp=head;
+    while(temp!=NULL)
+    {
+        cout<<temp->data<<"->";
+        temp=temp->next;
+    }
+    cout<<endl;
+}
+void middle(Node* &head)
+{
+    int c=0;
+Node* temp=head;
+while(temp!=NULL)
+{
+    c++;
+    temp=temp->next;
+}
+int m=c/2;
+c=0;
+temp=head;
+while(c<m)
+{
+    c++;
+    temp=temp->next;
+}
+cout<<temp->data;
+}
+int main()
+{
+Node*head=NULL;
+Node*tail=NULL;
+insertAttail(head,tail,5);
+insertAttail(head,tail,6);
+insertAthead(head,tail,2);
+insertAthead(head,tail,3);
+display(head);
+middle(head);
+deleteAthead(head);
+deleteAttail(head,tail);
+display(head);
+
+//reverse(head,tail);
+return 0;
+}
