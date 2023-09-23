@@ -1,0 +1,59 @@
+#include<iostream>
+using namespace std;
+class Node{
+    public:
+    int data;
+    Node*next;
+
+    Node(int d)
+    {
+        data=d;
+        next=NULL;
+    }
+};
+void insertAthead(Node* &head,Node* &tail,int d)
+{
+    Node*ptr=new Node(d);
+if(head==NULL)
+{
+    head=ptr;
+    tail=ptr;
+    return;
+}
+else
+{
+ptr->next=head;
+head=ptr;
+}
+}
+void search(Node* &head,int ele)
+{
+    Node*temp=head;
+    while(temp!=NULL)
+    {
+if(temp->data==ele)
+{
+    cout<<temp->data<<" founded and exists in linked list";
+    break;
+}
+else
+{
+    temp=temp->next;
+}
+    }
+    if(temp==NULL)
+    {
+        cout<<"element not founded";
+    }
+}
+int main()
+{
+    Node*head=NULL;
+    Node*tail=NULL;
+    insertAthead(head,tail,6);
+    insertAthead(head,tail,7);
+    insertAthead(head,tail,8);
+    insertAthead(head,tail,9);
+    search(head,10);
+    return 0;
+}
