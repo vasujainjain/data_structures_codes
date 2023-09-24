@@ -1,0 +1,62 @@
+#include<iostream>
+using namespace std;
+class Stack
+{
+    public:
+    int data;Stack*next;
+    Stack(int d)
+    {
+        data=d;
+        next=NULL;
+    }
+};
+    void enqueue(int d,Stack* &head)
+    {
+        Stack*ptr=new Stack(d);
+        if(head==NULL)
+        {
+            head=ptr;
+        }
+        else{
+            ptr->next=head;
+            head=ptr;
+        }
+    }
+    void dequeue(Stack* &head)
+    {
+        Stack*temp=head;
+        if(head==NULL)
+        {
+            cout<<"stack underflow";
+        }
+        else if(head->next==NULL)
+        {
+            head=NULL;
+        }
+        else
+        {
+            head=head->next;
+delete temp;
+        }
+    }
+    void display(Stack* &head)
+    {
+Stack*temp=head;
+while(temp!=NULL)
+{
+    cout<<temp->data<<"->";
+    temp=temp->next;
+}
+    }
+int main()
+{
+Stack*head=NULL;
+head=NULL;
+enqueue(4,head);
+enqueue(5,head);
+enqueue(6,head);
+enqueue(7,head);
+display(head);
+dequeue(head);
+display(head);
+}
