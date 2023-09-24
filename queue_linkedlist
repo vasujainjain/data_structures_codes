@@ -1,0 +1,69 @@
+#include<iostream>
+using namespace std;
+class Queue
+{
+    public:
+    int data;
+    Queue*front,*rear,*next;
+    Queue(int d)
+    {
+        data=d;
+        front=NULL;
+        rear=NULL;
+        next=NULL;
+    }
+};
+void enqueue(Queue* &rear,Queue* &front,int d)
+{
+    Queue*ptr=new Queue(d);
+    if(front==NULL&&rear==NULL)
+    {
+        rear=ptr;
+        front=ptr;
+        return;
+    }
+    else
+    {
+        rear->next=ptr;
+        rear=ptr;
+    }
+}
+void dequeue(Queue* &front,Queue* &rear)
+{
+    Queue*temp=front;
+if(front==NULL)
+{
+    return;
+}
+else if(front==rear)
+{
+    front=rear=NULL;
+    }
+
+    else
+    
+    {front=front->next;
+    delete temp;
+    }
+
+}
+void display( Queue* &front)
+{
+    Queue *temp=front;
+while(temp!=NULL)
+{
+    cout<<front->data<<"->";
+    front=front->next;
+}
+}
+int main()
+{
+    Queue* front=NULL;
+    Queue* rear=NULL;
+    enqueue(rear,front,4);
+    enqueue(rear,front,5);
+    enqueue(rear,front,6);
+    dequeue(front,rear);
+    display(front);
+    return 0;
+}
