@@ -1,0 +1,70 @@
+#include<iostream>
+using namespace std;
+class Stack
+{
+    public:
+    int n,top;int*arr;
+    Stack(int size)
+    {
+        n=size;
+        arr=new int(n);
+        top=-1;
+    }
+    void enqueue(int ele)
+    {
+       if(top<n-1)
+            {
+                top++;
+                arr[top]=ele;
+            }
+            else
+            cout<<"stack overflow";
+        }
+        void dequeue()
+        {
+            if(top==-1)
+            {
+                cout<<"stack underflow";
+            }
+            else
+            {
+                
+                top--;
+            cout<<arr[top]<<endl;
+            }
+        }
+        void isEmpty()
+        {
+            if(top==-1)
+            {
+                cout<<"empty";
+            }
+            else
+            {
+                cout<<"not empty";
+            }
+        }
+        void display()
+        {
+            for(int i=0;i<n;i++)
+            {
+                cout<<arr[i]<<" ";
+            }
+            cout<<endl;
+        }
+
+    };
+int main()
+{
+    Stack obj(5);
+    obj.enqueue(1);
+    obj.enqueue(2);
+    obj.enqueue(3);
+    obj.enqueue(4);
+    obj.enqueue(5);
+    obj.enqueue(6);
+    obj.display();
+    obj.dequeue();
+obj.isEmpty();
+    obj.display();
+}
