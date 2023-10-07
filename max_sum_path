@@ -1,0 +1,52 @@
+#include<iostream>
+#include<queue>
+using namespace std;
+class Node
+{
+    public:
+    int data;
+    Node*left;
+    Node*right;
+    Node(int val)
+    {
+        data=val;
+        left=right=NULL;
+    }
+};
+Node* createTree(Node*root)
+{
+   int data;
+   cout<<"enter data";
+   cin>>data;
+   root=new Node(data);
+   if(data==-1)
+   {
+    return NULL;
+   }
+   cout<<"enter left part of "<<data;
+   root->left=createTree(root->left);
+   cout<<"enter right part of "<<data;
+   root->right=createTree(root->right);
+}
+int maximum_sum_path(Node* root)
+{
+    if(root==NULL)
+    {
+        return 0;
+    }
+    int max_left=maximum_sum_path(root->left);
+    int max_right=maximum_sum_path(root->right);
+   if(max_left>max_right)
+    return (max_left+root->data);
+    else
+    return (max_right+root->data);
+
+}
+int main()
+{
+    Node*root=NULL;
+    root=createTree(root);
+    int max_sum=maximum_sum_path(root);
+    cout<<"maximum node of tree: "<<max_sum;
+    return 0;
+}
