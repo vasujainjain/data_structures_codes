@@ -1,0 +1,74 @@
+#include<iostream>
+#include<queue>
+using namespace std;
+class Node
+{
+    public:
+int data;
+Node*left,*right;
+Node(int val)
+{
+    data=val;
+    left=right=NULL;
+}
+};
+Node* createTree(Node* root)
+{
+    int data;
+        cout<<"enter data";
+    cin>>data;
+    root=new Node(data);
+    if(data==-1)
+    {
+        return NULL;
+    }
+    cout<<"enter left part of "<<data;
+    root->left=createTree(root->left);
+    cout<<"enter right part of "<<data;
+    root->right=createTree(root->right);
+    return root;
+}
+void levelTraversal(Node*root)
+{
+    if(root==NULL)
+    {
+        return;
+    }
+queue<Node*>q;
+q.push(root);
+while(!q.empty())
+{
+    int arr[6];
+    bool lefttoright=true;
+    int s=q.size();
+    for(int i=0;i<s;i++)
+    {
+        Node*temp=q.front();
+        q.pop();
+if(!lefttoright)
+{
+    arr[i]=temp->data;
+}
+else
+{
+    arr[s-1-i]=temp->data;
+}
+if(temp->left)
+q.push(temp->left);
+if(temp->right)
+q.push(temp->right);
+    }
+    lefttoright=!lefttoright;
+    for(int i=0;i<s;i++)
+    {
+        cout<<arr[i]<<" ";
+    }
+}
+}
+int main()
+{
+    Node*root=NULL;
+    root=createTree(root);
+    levelTraversal(root);
+    return 0;
+}
