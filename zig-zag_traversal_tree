@@ -36,10 +36,10 @@ void levelTraversal(Node*root)
     }
 queue<Node*>q;
 q.push(root);
+ bool lefttoright=true;
 while(!q.empty())
 {
     int arr[6];
-    bool lefttoright=true;
     int s=q.size();
     for(int i=0;i<s;i++)
     {
