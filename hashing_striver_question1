@@ -1,0 +1,29 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+    int s;
+    cout<<"enter the size";
+    cin>>s;
+    int arr[s];
+    cout<<endl<<"enter array elements";
+    for(int i=0;i<s;i++)
+    {
+        cin>>arr[i];
+    }
+    int hash[13]={0};
+    for(int i=0;i<s;i++)
+    {
+        hash[arr[i]]+=1;
+    }
+    int q;
+    cout<<endl<<"enter number of elements";
+    cin>>q;
+    while(q--)
+    {
+        int n;
+        cin>>n;
+        cout<<n<<" "<<hash[n]<<endl;
+    }
+    return 0;
+}
