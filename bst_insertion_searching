@@ -1,0 +1,88 @@
+#include<iostream>
+#include<Queue>
+using namespace std;
+class Node
+{
+    public:
+    int data;
+    Node*left,*right;
+    Node(int d)
+    {
+        data=d;
+        left=right=NULL;
+    }
+};
+Node* insert_bst(Node* &root,int d)
+{
+if(root==NULL)
+{
+    root=new Node(d);
+    return root;
+}
+if(d<root->data)
+{
+    root->left=insert_bst(root->left,d);
+}
+else{
+    root->right=insert_bst(root->right,d);
+}
+return root;
+}
+void input(Node* &root)
+{
+int val;
+cin>>val;
+while(val!=-1)
+{
+    root=insert_bst(root,val);
+    cin>>val;
+}
+}
+void level_traversal(Node* &root)
+{
+    queue<Node*>q;
+    q.push(root);
+    while(!q.empty())
+    {
+        Node*temp=q.front();
+        cout<<temp->data;
+        q.pop();
+        if(temp->left)
+        {
+            q.push(temp->left);
+        }
+        if(temp->right)
+        {
+            q.push(temp->right);
+        }
+    }
+}
+bool search_bst(Node* &root,int ele)
+{
+    if(root==NULL)
+    {
+        return false;
+    }
+    if(root->data==ele)
+    {
+        return true;
+    }
+    if(root->data<ele)
+    {
+        return search_bst(root->right,ele);
+    }
+    if(root->data>ele)
+    {
+        return search_bst(root->left,ele);
+    }
+}
+int main()
+{
+    Node*root=NULL;
+    input(root);
+    level_traversal(root);
+    cout<<endl;
+    bool res=search_bst(root,20);
+    cout<<res;
+    return 0;
+}
