@@ -1,0 +1,16 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+    string str="abbbccdddd";int hash[26]={0},sum=0;
+    for(int i=0;i<str.size();i++)
+    {
+        hash[str[i]-'a']+=1;
+    }
+    for(int i=0;i<26;i++)
+    {
+        sum=sum+(hash[i]*(97+i));
+    }
+    cout<<sum;
+    return 0;
+}
