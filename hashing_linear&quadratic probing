@@ -1,0 +1,29 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+    int arr[5]={89,19,18,58,45};
+    int hash[5]={0};
+    for(int i=0;i<5;i++)
+    {
+        if(hash[arr[i]%5]==0)
+        {
+           hash[arr[i]%5]=arr[i];
+        }
+        else
+        { 
+            int j=1;
+            while(hash[(arr[i]+j*j)%5]!=0){
+                j++;
+            }
+            if(hash[(arr[i]+j*j)%5]==0)// for linear probing(arr[i]+j%5)
+            {
+                hash[(arr[i]+j*j)%5]=arr[i];
+            }           
+        }
+    }
+    for(int i=0;i<5;i++)
+    {
+        cout<<hash[i]<<" ";
+    }
+}
