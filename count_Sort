@@ -14,11 +14,7 @@ for(int i=0;i<n;i++)
 mini=abs(mini);
 for(int i=0;i<n;i++)
 {
-arr[i]=arr[i]+mini;
-}
-for(int i=0;i<n;i++)
-{
-    count[arr[i]]=count[arr[i]]+1;
+    count[arr[i]+mini]=count[arr[i]+mini]+1;
 }
 for(int i=0;i<19;i++)
 {
@@ -32,16 +28,12 @@ cout<<endl;
 int b[n];
 for(int i=n-1;i>=0;i--)
 {
-    count[arr[i]]=count[arr[i]]-1;
-    b[count[arr[i]]]=arr[i];
-}
-for(int i=0;i<n;i++)
-{
-    b[i]=b[i]-mini;
+    count[arr[i]+mini]=count[arr[i]+mini]-1;
+    b[count[arr[i]+mini]]=arr[i]+mini;
 }
 for(int i=0;i<n;i++)
     {
-        arr[i]=b[i];
+        arr[i]=b[i]-mini;
     }
 }
 int main()
