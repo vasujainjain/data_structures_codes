@@ -1,0 +1,78 @@
+#include<iostream>
+using namespace std;
+class Stack
+{
+    public:
+    int n,top;
+    char *arr;
+    string newstr;
+    Stack(int s)
+    {
+        n=s;
+        top=-1;
+        newstr="";
+        arr=new char(n);
+    }
+    void push(int x)
+{
+    if(top==n-1)
+    {
+        cout<<"stack overflow"<<endl;
+    }
+    else
+    {
+        top++;
+        arr[top]=x;
+    }
+}
+void pop()
+{ 
+    if(top==-1)
+    cout<<"stack underflow"<<endl;
+    else
+    {
+        newstr=newstr+arr[top];
+        top--;
+       n--;
+    }
+}
+void front()
+{
+    if(top!=-1)
+    cout<<arr[top]<<endl;
+}
+bool isEmpty()
+{
+    if(top==-1)
+    return true;
+    else
+    return false;
+}
+void print()
+{
+    for(int i=0;i<n;i++)
+    {
+        cout<<arr[i]<<" ";
+    }
+}
+};
+int main()
+{
+    Stack obj(5);
+    obj.push('m');
+    obj.push('a');
+     obj.push('n');
+    obj.push('a');
+     obj.push('s');
+     int a=obj.n;
+     for(int i=0;i<a;i++)
+     {
+        obj.pop();
+     }
+/*obj.front();
+bool check=obj.isEmpty();
+cout<<check<<endl;*/
+//obj.print();
+cout<<obj.newstr;
+return 0;
+}
