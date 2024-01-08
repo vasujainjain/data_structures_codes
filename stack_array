@@ -28,9 +28,8 @@ class Stack
             }
             else
             {
-                
                 top--;
-            cout<<arr[top]<<endl;
+                n--;
             }
         }
         void isEmpty()
