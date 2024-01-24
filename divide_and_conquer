@@ -1,0 +1,257 @@
+//binary search
+#include<iostream>
+using namespace std;
+ int binary(int *arr,int s,int e,int ele)
+ {
+     if(s>e)
+     return -1;
+    int mid=(s+e)/2;
+    if(arr[mid]<ele)
+    binary(arr,mid+1,e,ele);
+    else if(arr[mid]>ele)
+    binary(arr,s,mid-1,ele);
+    else
+     return arr[mid];
+ }
+ int main()
+ {
+     int arr[]={1,2,5,9,14};
+     int b=binary(arr,0,4,20);
+     cout<<b;
+    return 0;
+ }
+//merge sort
+void merge(int *arr,int s,int e)
+{
+    int mid=(s+e)/2;
+    int len1=mid-s+1;
+    int len2=e-mid;
+    int *arr1=new int(len1);
+    int *arr2=new int(len2);
+    int main_array_index=s;
+    for(int i=0;i<len1;i++)
+    {
+        arr1[i]=arr[main_array_index++];
+    }
+    main_array_index=mid+1;    
+    for(int i=0;i<len2;i++)
+    {
+        arr2[i]=arr[main_array_index++];
+    }
+    int index1=0,index2=0;
+    main_array_index=s;
+    while(index1<len1&&index2<len2)
+    {
+        if(arr1[index1]<arr2[index2])
+        {
+            arr[main_array_index++]=arr1[index1++];
+        }
+        else 
+        {
+            arr[main_array_index++]=arr2[index2++];
+        }
+    }
+    while(index1<len1)
+    {
+     arr[main_array_index++]=arr1[index1++];   
+    }
+    while(index2<len2)
+{
+    arr[main_array_index++]=arr2[index2++];
+}
+}
+void mergeSort(int *arr,int s,int e)
+{
+    if(s>=e)
+    return;
+    int mid=(s+e)/2;
+    mergeSort(arr,s,mid);
+    mergeSort(arr,mid+1,e);
+    merge(arr,s,e);
+}
+int main()
+{
+    int n;
+    cin>>n;
+    int arr[n];
+    for(int i=0;i<n;i++)
+    {
+        cin>>arr[i];
+    }
+    mergeSort(arr,0,n-1);
+    for(int i=0;i<n;i++)
+    {
+        cout<<arr[i]<<" ";
+    }
+    return 0;
+}
+//quick sort
+int partition(int *arr,int s,int e)
+{
+    int pivot=arr[s],c=0;
+    for(int i=s+1;i<=e;i++)
+    {
+        if(arr[i]<=pivot)
+        c++;
+    }
+    int pivot_index=s+c;
+    swap(arr[pivot_index],arr[s]);
+    int i=s,j=e;
+    while(i<pivot_index&&j>pivot_index)
+    {
+        while(arr[i]<pivot)
+        i++;
+        while(arr[j]>pivot)
+        j--;
+    if(i<pivot_index&&j>pivot_index)
+    {
+        swap(arr[i++],arr[j--]);
+    }
+    }
+    return pivot_index;
+}
+void quickSort(int *arr,int s,int e)
+{
+    if(s>=e)
+    return;
+    int p=partition(arr,s,e);
+    quickSort(arr,s,p-1);
+    quickSort(arr,p+1,e);
+}
+int main()
+{
+    int n;
+    cin>>n;
+    int arr[n];
+    for(int i=0;i<n;i++)
+    {
+        cin>>arr[i];
+    }
+    quickSort(arr,0,n-1);
+    for(int i=0;i<n;i++)
+    {
+        cout<<arr[i]<<" ";
+    }
+    return 0;
+}
+
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+ 
