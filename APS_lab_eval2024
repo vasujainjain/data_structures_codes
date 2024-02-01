@@ -1,0 +1,39 @@
+QUESTION 
+
+Given a array in which distinct elemnts are present in random order. Find key element using 
+divide and conquer in optimized time complexity. Write the time compxity of the 
+implemented solution.
+Example:
+Input: arr[] = {1, 10, 5, 6, 3, 8}, key= 3
+Output: Key Present at index 4
+Input: arr[] = {1, 10, 5, 6, 3, 8}, key= 7
+Output: Key not Present in array
+
+SOLN:
+
+int index(int arr[],int n,int key)
+{
+    sort(arr,arr+n);
+    int low=0,high=n-1;
+    while(low<=high)
+    {
+        int mid=(low+high)/2;
+        if(arr[mid]==key)
+        return mid;
+        else if(arr[mid]>key)
+        high=mid-1;
+        else
+        low=mid+1;
+    }
+    return -1;
+}
+int main()
+{
+    int arr[]={1,8,10,6,3,5};
+    int pos=index(arr,6,6);
+    if(pos==-1)
+    cout<<"key is not present in array";
+    else
+    cout<<pos<<endl;
+    return 0;
+}
