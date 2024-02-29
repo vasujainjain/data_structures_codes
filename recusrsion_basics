@@ -1,0 +1,163 @@
+#include<iostream>
+#include<string.h>
+using namespace std;
+int c=1;
+/*void print(int i,int n)
+{
+if(i>n)
+return;
+cout<<"vasu"<<endl;
+print(i+1,n);
+}
+//printing N to 1 elememts
+void print(int i,int n)
+{
+    if(i>n)
+    return;
+    print(i+1,n);
+    cout<<i;
+}
+ OR 
+void print(int n)
+{
+    if(n==0)
+    return;
+    cout<<n;
+    print(n-1);
+}
+// by backtracking
+void print(int i,int n)
+{
+    if(i<1)
+    return;
+    cout<<i;
+    print(i-1,n);
+}
+int main()
+{
+    int n=5;
+    print(n,n);
+    return 0;
+}
+/*int main()
+{
+    int n=5;
+    print(1,n);
+    return 0;
+}
+//functional recursion
+int sum(int n)
+{
+    int s;
+    if(n<1)
+    return n;
+    else
+   return(n+sum(n-1));
+}
+int main()
+{
+    int n=5;
+    int s=sum(n);
+    cout<<s;
+    return 0;
+}
+//parametrised recursion
+int s=0;
+void sum(int i,int s)
+{
+if(i<0)
+{
+    cout<<s;
+    return;
+}
+else
+{
+  sum(i-1,s+i);
+}
+}
+int main()
+{
+    int n=10;
+    sum(n,0);
+    return 0;
+}
+// factorial parametrised
+void fact(int i,int f)
+{
+    if(i==1)
+   { 
+    cout<<f;
+    return;
+   }
+    fact(i-1,f*i);
+}
+int main()
+{
+    int n=6,f=1;
+    fact(n,f);
+    return 0;
+}
+//reverse array functional recusrion
+void reverseArray(int s,int e,int arr[])
+{
+if(s>=e)//(i>=n/2)
+{
+    return;
+}
+else
+{
+swap(arr[s],arr[e]);//swap(arr[i],arr[n-1-i])
+return reverseArray(s+1,e-1,arr);//reverseArray(i+1,n);
+}
+}
+int main()
+{
+    int n=5,arr[n]={1,2,3,4,5};
+    reverseArray(0,n-1,arr);
+    for(int i=0;i<n;i++)
+{
+    cout<<arr[i]<<" ";
+}
+return 0;
+}
+//palindrome string
+string res="false";
+string palindrome(int i,int n,string str)
+{
+if(i>=n/2)
+{
+return str;
+}
+else if(str[i]!=str[n-1-i])
+return res;
+swap(str[i],str[n-i-1]);
+return palindrome(i+1,n,str);
+}
+int main()
+{
+    string str="namam";
+    int n=str.size();
+    string palin=palindrome(0,n,str);
+    if(palin.compare(str)==0)
+    cout<<"yes";
+    else
+    cout<<"no";
+    return 0;
+}
+*/
+//fibonacci
+int fibo(int n)
+{
+    if(n<=1)
+    return n;
+int first=fibo(n-1);
+int last=fibo(n-2);
+return (first+last);
+}
+int main()
+{
+    int n=8;
+    int res=fibo(n);
+    cout<<res;
+    return 0;
+}
