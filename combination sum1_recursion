@@ -1,0 +1,41 @@
+#include<iostream>
+#include<Vector>
+using namespace std;
+void findCombination(int arr[],int n,int index,int target,vector<int>&vec,vector<vector<int>>&ans)
+{
+if(index==n)
+{
+    if(target==0)
+    ans.push_back(vec);
+    return;
+}
+if(arr[index]<=target)
+{
+    vec.push_back(arr[index]);
+    findCombination(arr,n,index,target-arr[index],vec,ans);
+    vec.pop_back();
+}
+findCombination(arr,n,index+1,target,vec,ans);
+}
+vector<vector<int>>combinationSum(int arr[],int n,int target)
+{
+vector<int>vec;
+vector<vector<int>>ans;
+findCombination(arr,n,0,target,vec,ans);
+return ans;
+}
+int main()
+{
+    int arr[]={2,3,5,7},n=4;
+    int target=7;
+    vector<vector<int>>a=combinationSum(arr,n,target);
+    for(int i=0;i<a.size();i++)
+    {
+        for(int j=0;j<a[i].size();j++)
+        {
+            cout<<a[i][j];
+        }
+        cout<<endl;
+    }
+    return 0;
+}
