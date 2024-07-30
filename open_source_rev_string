@@ -1,0 +1,19 @@
+using namespace std;
+#include<iostream>
+string rev_string (string str,int n)
+{
+    int low=0,high=n-1;
+    while(low<high)
+    {
+        swap(str[low],str[high]);
+        low++;
+        high--;
+    }
+    return str;
+}
+int main()
+{
+    string str="vasu";int n=4;
+    string ans=rev_string(str,n);
+    cout<<ans;
+}
