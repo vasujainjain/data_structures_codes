@@ -1,0 +1,18 @@
+#include<iostream>
+using namespace std;
+double average (int arr[],int n)
+{
+    double s=0;double avg=0.0;
+    for(int i=0;i<n;i++)
+    {
+        s=s+arr[i];
+    }
+    avg=(s/n);
+    return avg;
+}
+int main()
+{
+    int arr[]={1,2,3,4,5,6};
+    double ans=average(arr,6);
+    cout<<ans;
+}
